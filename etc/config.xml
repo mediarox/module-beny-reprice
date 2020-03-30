@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Mediarox_BenyReprice
+ * @copyright Copyright 2020(c) mediarox UG (haftungsbeschraenkt) (http://www.mediarox.de)
+ * @author Marcus Bernt <mbernt@mediarox.de>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <beny_reprice>
+            <general>
+                <enable>0</enable>
+                <debug_enable>1</debug_enable>
+                <test_enable>1</test_enable>
+                <api_key></api_key>
+                <email_notification></email_notification>
+            </general>
+            <export>
+                <file_upload></file_upload>
+                <keep_old>1</keep_old>
+                <line_end>win</line_end>
+                <seperator>comma</seperator>
+            </export>
+            <import>
+                <export_all>0</export_all>
+                <import_prices>0</import_prices>
+            </import>
+            <delete>
+                <delete_product>0</delete_product>
+            </delete>
+        </beny_reprice>
+    </default>
+</config>

@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Mediarox_BenyReprice
+ * @copyright Copyright 2020(c) mediarox UG (haftungsbeschraenkt) (http://www.mediarox.de)
+ * @author Marcus Bernt <mbernt@mediarox.de>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mediarox">
+            <label>Mediarox</label>
+        </tab>
+        <section id="beny_reprice" translate="label" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10">
+            <tab>mediarox</tab>
+            <label>Beny Reprice</label>
+            <class>seperator-top</class>
+            <resource>Mediarox_BenyReprice::beny_config</resource>
+            <group id="general" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>General</label>
+                <field id="enable" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="10" type="select">
+                    <label>Enable</label>
+                    <comment>Enable Beny Reprice</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="debug_enable" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="10" type="select">
+                    <label>Debug Mode</label>
+                    <comment>Enable extended logging</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="test_enable" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="10" type="select">
+                    <label>Test Mode</label>
+                    <comment>Enable Test Mode. No changes will be made on beny nor in the shop.</comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\TestMode</source_model>
+                </field>
+                <field id="api_key" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="text">
+                    <label>API Key</label>
+                    <comment>Please enter your Beny Reprice API key</comment>
+                </field>
+                <field id="check_license" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="button">
+                    <frontend_model>Mediarox\BenyReprice\Block\System\Config\CheckLicenseButton</frontend_model>
+                </field>
+                <field id="email_notification" translate="label comment" showInDefault="1" showInStore="0"
+                       showInWebsite="0" sortOrder="30" type="text">
+                    <label>Email</label>
+                    <comment>Please enter email address to receive status notifications.</comment>
+                </field>
+            </group>
+            <group id="export" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>Product Export</label>
+                <field id="enable_export" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Enable Product Export</label>
+                    <comment>Export products to Beny Reprice.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="market_place" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Marketplace</label>
+                    <comment>Marketplace to export to and import from.</comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\Marketplace</source_model>
+                </field>
+                <field id="file_upoad" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="Magento\Config\Block\System\Config\Form\Field\File">
+                    <label>Export File</label>
+                    <comment>Only .csv or .excel files are supported</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\File</backend_model>
+                    <upload_dir config="system" scope_info="1">beny_reprice</upload_dir>
+                </field>
+                <field id="keep_old" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Keep Old</label>
+                    <comment>Determines wether old product entries can be deleted.</comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\KeepOld</source_model>
+                </field>
+                <field id="line_end" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Line End</label>
+                    <comment>Specifiy on which operating system your created your import file.</comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\LineEnd</source_model>
+                </field>
+                <field id="seperator" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Seperator</label>
+                    <comment>Determines the character seperating the values.</comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\Seperator</source_model>
+                </field>
+            </group>
+            <group id="import" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>Price Updates</label>
+                <field id="export_all" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Export All</label>
+                    <comment>Determines whether or not a full export of all products is made or only an export of those
+                        products that BENY has a price update suggestion for.
+                    </comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\ExportAll</source_model>
+                </field>
+                <field id="import_prices" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Enable Price Import</label>
+                    <comment>Import price suggestions directly to catalog.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="delete" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>Delete Product</label>
+                <field id="delete_product" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Delete on Beny Reprice</label>
+                    <comment>Delete product from Beny Reprice if product is deleted from catalog.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="export_errors" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
+                <label>Export Of Erroneous Products</label>
+                <field id="export_error_products" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="button">
+                    <comment>Export a csv file containing all erroneous products from Beny Reprice.</comment>
+                    <frontend_model>Mediarox\BenyReprice\Block\System\Config\ExportErrors</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

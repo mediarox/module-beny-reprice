@@ -1,0 +1,47 @@
+<?php
+/**
+ * @package   Mediarox_BenyReprice
+ * @copyright Copyright 2020 (c) mediarox UG (haftungsbeschraenkt) (http://www.mediarox.de)
+ * @author    Marcus Bernt <mbernt@mediarox.de>
+ */
+?>
+<script>
+    require([
+        'jquery',
+        'prototype',
+    ], function (jQuery) {
+        function check_license() {
+            params = {};
+
+            new Ajax.Request('<?php echo $block->getAjaxUrl() ?>', {
+                loaderArea: false,
+                asynchronous: true,
+                parameters: params,
+                onSuccess: function (transport) {
+                    var repsonseJSON = transport._getResponseJSON();
+                    jQuery('#customer_id').html('Customer ID: ' + repsonseJSON[0].customer_id);
+                    jQuery('#start_date').html('Start Date: ' + repsonseJSON[0].start_date);
+                    jQuery('#end_date').html('End Date: ' + repsonseJSON[0].end_date);
+                    jQuery('#license').html('License: ' + repsonseJSON[0].license);
+                    jQuery('#max_products').html('Max Products: ' + repsonseJSON[0].max_products);
+                    jQuery('#market_places').html('Market Places: ' + repsonseJSON[0].market_places);
+                }
+            });
+        }
+
+        jQuery('#check_license').click(function () {
+            check_license();
+        });
+
+    });
+</script>
+
+<?php echo $block->getButtonHtml() ?>
+<div id="license_info">
+    <div id="customer_id"></div>
+    <div id="start_date"></div>
+    <div id="end_date"></div>
+    <div id="license"></div>
+    <div id="max_products"></div>
+    <div id="market_places"></div>
+</div>

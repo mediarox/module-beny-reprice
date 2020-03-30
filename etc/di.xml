@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Mediarox_BenyReprice
+ * @copyright Copyright 2020 - present (c) mediarox UG (haftungsbeschraenkt) (http://www.mediarox.de)
+ * @author Marcus Bernt <mbernt@mediarox.de>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mediarox\BenyReprice\Api\Data\ConfigInterface" type="Mediarox\BenyReprice\Model\System\Config"/>
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="test_beny_reprice" xsi:type="object">Mediarox\BenyReprice\Console\Command\Test</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Custom logger-->
+    <virtualType name="BenyLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="critical" xsi:type="object">Mediarox\BenyReprice\Logger\Handler\CriticalHandler</item>
+                <item name="debug" xsi:type="object">Mediarox\BenyReprice\Logger\Handler\DebugHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Mediarox\BenyReprice\Cron\Import">
+        <arguments>
+            <argument name="logger" xsi:type="object">BenyLogger</argument>
+        </arguments>
+    </type>
+    <type name="Mediarox\BenyReprice\Cron\Export">
+        <arguments>
+            <argument name="logger" xsi:type="object">BenyLogger</argument>
+        </arguments>
+    </type>
+    <type name="Mediarox\BenyReprice\Model\Api">
+        <arguments>
+            <argument name="logger" xsi:type="object">BenyLogger</argument>
+        </arguments>
+    </type>
+</config>
