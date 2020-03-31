@@ -2,12 +2,12 @@
     "name": "mediarox/module-beny-reprice",
     "description": "API for Beny Reprice import/export.",
     "type": "magento2-module",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "license": [
         "MIT"
     ],
     "require": {
-        "php": ">=7.2",
+        "php": "~7.1.0|~7.2.0",
         "magento/framework": "^102.0.0"
     },
     "autoload": {
