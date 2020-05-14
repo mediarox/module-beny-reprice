@@ -10,7 +10,7 @@ Installation
 ============
 Composer
 --------
-    composer require mediarox/beny-reprice
+    composer require mediarox/module-beny-reprice
     bin/magento setup:upgrade
     
 Features
