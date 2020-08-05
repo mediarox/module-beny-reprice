@@ -7,13 +7,8 @@
 
 namespace Mediarox\BenyReprice\Model;
 
-use Magento\Framework\UrlInterface;
-use Mediarox\BenyReprice\Model\System\Config;
-use Psr\Log\LoggerInterface;
-use Zend\Http\ClientFactory;
-use Zend\Http\Headers;
-use Zend\Http\Request;
-use Zend\Stdlib\Parameters;
+use Laminas\Http\Request;
+use Laminas\Http\Response;
 
 /**
  * Class DeleteProducts
@@ -23,39 +18,15 @@ use Zend\Stdlib\Parameters;
 class DeleteProducts extends Api
 {
     /**
-     * Delete constructor.
-     *
-     * @param Config          $config
-     * @param UrlInterface    $url
-     * @param Request         $request
-     * @param Parameters      $parameters
-     * @param Headers         $headers
-     * @param ClientFactory   $client
-     * @param LoggerInterface $logger
-     */
-    public function __construct(
-        Config $config,
-        UrlInterface $url,
-        Request $request,
-        Parameters $parameters,
-        Headers $headers,
-        ClientFactory $client,
-        LoggerInterface $logger
-    ) {
-        parent::__construct($config, $url, $request, $parameters, $client, $headers, $logger);
-    }
-
-    /**
      * Send delete request to Beny.
      *
      * @param array $productSkus
-     * @return \Zend\Http\Response
-     * @throws \Exception
+     * @return Response
      */
     public function deleteFromBeny(array $productSkus)
     {
         $uri = $this->getApiUri(self::BENY_API_DELETE_PRODUCTS);
-        $requestContent = json_encode(['ids' => [$productSkus]]);
+        $requestContent = \json_encode(['ids' => [$productSkus]]);
         $headers = $this->headers->addHeaders(['Content-Type=application/json']);
         $method = Request::METHOD_GET;
 

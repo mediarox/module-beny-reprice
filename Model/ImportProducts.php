@@ -7,16 +7,16 @@
 
 namespace Mediarox\BenyReprice\Model;
 
+use Laminas\Http\ClientFactory;
+use Laminas\Http\Headers;
+use Laminas\Http\Request;
+use Laminas\Stdlib\Parameters;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem;
 use Magento\Framework\UrlInterface;
 use Mediarox\BenyReprice\Model\System\Config;
 use Psr\Log\LoggerInterface;
-use Zend\Http\ClientFactory;
-use Zend\Http\Headers;
-use Zend\Http\Request;
-use Zend\Stdlib\Parameters;
 
 /**
  * Class ImportProducts
@@ -35,30 +35,30 @@ class ImportProducts extends Api
     private $filesystem;
 
     /**
-     * Export constructor.
+     * ImportProducts constructor.
      *
-     * @param System\Config   $config
+     * @param Config          $config
      * @param UrlInterface    $url
+     * @param ClientFactory   $client
      * @param Request         $request
      * @param Parameters      $parameters
      * @param Headers         $headers
-     * @param ClientFactory   $client
+     * @param LoggerInterface $logger
      * @param DirectoryList   $directoryList
      * @param Filesystem      $filesystem
-     * @param LoggerInterface $logger
      */
     public function __construct(
         Config $config,
         UrlInterface $url,
+        ClientFactory $client,
         Request $request,
         Parameters $parameters,
         Headers $headers,
-        ClientFactory $client,
+        LoggerInterface $logger,
         DirectoryList $directoryList,
-        Filesystem $filesystem,
-        LoggerInterface $logger
+        Filesystem $filesystem
     ) {
-        parent::__construct($config, $url, $request, $parameters, $client, $headers, $logger);
+        parent::__construct($config, $url, $client, $request, $parameters, $headers, $logger);
         $this->directoryList = $directoryList;
         $this->filesystem = $filesystem;
     }

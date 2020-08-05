@@ -7,15 +7,15 @@
 
 namespace Mediarox\BenyReprice\Model;
 
+use Laminas\Http\ClientFactory;
+use Laminas\Http\Exception\RuntimeException;
+use Laminas\Http\Headers;
+use Laminas\Http\Request;
+use Laminas\Stdlib\Parameters;
 use Magento\Framework\UrlInterface;
 use Mediarox\BenyReprice\Model\Product\Update;
 use Mediarox\BenyReprice\Model\System\Config;
 use Psr\Log\LoggerInterface;
-use Zend\Http\ClientFactory;
-use Zend\Http\Exception\RuntimeException;
-use Zend\Http\Headers;
-use Zend\Http\Request;
-use Zend\Stdlib\Parameters;
 
 /**
  * Class GetPriceUpdates
@@ -29,29 +29,17 @@ class GetPriceUpdates extends Api
      */
     private $productUpdate;
 
-    /**
-     * Import constructor.
-     *
-     * @param Config          $config
-     * @param UrlInterface    $url
-     * @param Request         $request
-     * @param Parameters      $parameters
-     * @param Headers         $headers
-     * @param ClientFactory   $client
-     * @param Update          $productUpdate
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         Config $config,
         UrlInterface $url,
+        ClientFactory $client,
         Request $request,
         Parameters $parameters,
         Headers $headers,
-        ClientFactory $client,
-        Update $productUpdate,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        Update $productUpdate
     ) {
-        parent::__construct($config, $url, $request, $parameters, $client, $headers, $logger);
+        parent::__construct($config, $url, $client, $request, $parameters, $headers, $logger);
         $this->productUpdate = $productUpdate;
     }
 
@@ -99,7 +87,7 @@ class GetPriceUpdates extends Api
     private function processProductUpdate($response)
     {
         $error = false;
-        $priceUpdates = json_decode($response->getContent(), true);
+        $priceUpdates = \json_decode($response->getContent(), true);
 
         foreach ($priceUpdates as $priceUpdate) {
             try {

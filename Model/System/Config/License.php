@@ -7,9 +7,10 @@
 
 namespace Mediarox\BenyReprice\Model\System\Config;
 
+use Laminas\Http\Exception\InvalidArgumentException;
+use Laminas\Http\Request;
+use Laminas\Http\Response;
 use Mediarox\BenyReprice\Model\Api;
-use Zend\Http\Exception\InvalidArgumentException;
-use Zend\Http\Request;
 
 /**
  * Class License
@@ -19,7 +20,7 @@ use Zend\Http\Request;
 class License extends Api
 {
     /**
-     * @return \Zend\Http\Response
+     * @return Response
      */
     public function checkLicense()
     {
