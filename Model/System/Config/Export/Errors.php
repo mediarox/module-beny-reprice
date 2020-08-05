@@ -7,14 +7,8 @@
 
 namespace Mediarox\BenyReprice\Model\System\Config\Export;
 
-use Magento\Framework\UrlInterface;
+use Laminas\Http\Request;
 use Mediarox\BenyReprice\Model\Api;
-use Mediarox\BenyReprice\Model\System\Config;
-use Psr\Log\LoggerInterface;
-use Zend\Http\ClientFactory;
-use Zend\Http\Headers;
-use Zend\Http\Request;
-use Zend\Stdlib\Parameters;
 
 /**
  * Class Errors
@@ -23,20 +17,8 @@ use Zend\Stdlib\Parameters;
  */
 class Errors extends Api
 {
-    public function __construct(
-        Config $config,
-        UrlInterface $url,
-        Request $request,
-        Parameters $parameters,
-        ClientFactory $client,
-        Headers $headers,
-        LoggerInterface $logger
-    ) {
-        parent::__construct($config, $url, $request, $parameters, $client, $headers, $logger);
-    }
-
     /**
-     * @return \Zend\Http\Response
+     * @return \Laminas\Http\Response
      */
     public function exportErrors()
     {
@@ -51,7 +33,7 @@ class Errors extends Api
     protected function getErrorParams()
     {
         return [
-            'format' => 'csv'
+            'format' => 'csv',
         ];
     }
 }

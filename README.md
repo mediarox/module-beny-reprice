@@ -3,7 +3,7 @@ before you move it to production)
 
 Requirements
 ============
-1. Magento 2.3
+1. Magento >=2.4
 2. PHP >=7.2
 
 Installation

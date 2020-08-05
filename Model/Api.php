@@ -7,16 +7,17 @@
 
 namespace Mediarox\BenyReprice\Model;
 
+use Laminas\Http\Client;
+use Laminas\Http\Client\Adapter\Curl;
+use Laminas\Http\ClientFactory;
+use Laminas\Http\Exception\RuntimeException;
+use Laminas\Http\Headers;
+use Laminas\Http\Request;
+use Laminas\Http\Response;
+use Laminas\Stdlib\Parameters;
 use Magento\Framework\UrlInterface;
 use Mediarox\BenyReprice\Model\System\Config;
 use Psr\Log\LoggerInterface;
-use Zend\Http\Client;
-use Zend\Http\Client\Adapter\Curl;
-use Zend\Http\ClientFactory;
-use Zend\Http\Exception\RuntimeException;
-use Zend\Http\Headers;
-use Zend\Http\Request;
-use Zend\Stdlib\Parameters;
 
 /**
  * Class Api
@@ -76,9 +77,9 @@ class Api
     public function __construct(
         Config $config,
         UrlInterface $url,
+        ClientFactory $client,
         Request $request,
         Parameters $parameters,
-        ClientFactory $client,
         Headers $headers,
         LoggerInterface $logger
     ) {
@@ -127,7 +128,7 @@ class Api
      * @param string  $method
      * @param Headers $headers
      * @param array   $params
-     * @return \Zend\Http\Response
+     * @return Response
      */
     protected function sendRequest(
         string $uri,
