@@ -27,7 +27,7 @@ class GetPriceUpdates extends Api
     /**
      * @var Update
      */
-    private $productUpdate;
+    private Update $productUpdate;
 
     public function __construct(
         Config $config,
@@ -48,11 +48,11 @@ class GetPriceUpdates extends Api
      *
      * @return array
      */
-    private function getImportParams()
+    private function getImportParams(): array
     {
         return [
             'exportall' => $this->config->getExportAll(),
-            'format' => 'json',
+            'format'    => 'json',
         ];
     }
 
@@ -61,7 +61,7 @@ class GetPriceUpdates extends Api
      *
      * @throws \Exception
      */
-    public function updatePrices()
+    public function updatePrices(): \Laminas\Http\Response
     {
         $parameters = $this->getImportParams();
         $requestContent = '';
@@ -84,7 +84,7 @@ class GetPriceUpdates extends Api
      * @param $response
      * @return bool
      */
-    private function processProductUpdate($response)
+    private function processProductUpdate($response): bool
     {
         $error = false;
         $priceUpdates = \json_decode($response->getContent(), true);

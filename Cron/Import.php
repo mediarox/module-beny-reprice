@@ -21,15 +21,15 @@ class Import
     /**
      * @var GetPriceUpdates
      */
-    private $import;
+    private GetPriceUpdates $import;
     /**
      * @var Config
      */
-    private $config;
+    private Config $config;
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * Import constructor.

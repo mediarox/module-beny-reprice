@@ -20,7 +20,7 @@ class Errors extends Api
     /**
      * @return \Laminas\Http\Response
      */
-    public function exportErrors()
+    public function exportErrors(): \Laminas\Http\Response
     {
         $uri = $this->getApiUri(self::BENY_API_GET_ERRORS);
         $method = Request::METHOD_GET;
@@ -30,7 +30,7 @@ class Errors extends Api
         return $this->sendRequest($uri, $content, $method, null, $params);
     }
 
-    protected function getErrorParams()
+    protected function getErrorParams(): array
     {
         return [
             'format' => 'csv',

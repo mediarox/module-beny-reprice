@@ -20,11 +20,11 @@ class Update
     /**
      * @var Product
      */
-    private $productResource;
+    private Product $productResource;
     /**
      * @var Product\Action
      */
-    private $productAction;
+    private Product\Action $productAction;
 
     /**
      * Update constructor.

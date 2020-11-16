@@ -19,7 +19,7 @@ class Seperator implements OptionSourceInterface
     /**
      * @inheritDoc
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         return [
             ['value' => 'comma', 'label' => __('Comma')],
