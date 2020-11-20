@@ -37,31 +37,31 @@ class Api
     /**
      * @var Config
      */
-    protected $config;
+    protected Config $config;
     /**
      * @var UrlInterface
      */
-    private $url;
+    private UrlInterface $url;
     /**
      * @var Request
      */
-    private $request;
+    private Request $request;
     /**
      * @var Parameters
      */
-    private $parameters;
+    private Parameters $parameters;
     /**
      * @var ClientFactory
      */
-    private $client;
+    private ClientFactory $client;
     /**
      * @var Headers
      */
-    protected $headers;
+    protected Headers $headers;
     /**
      * @var LoggerInterface
      */
-    protected $logger;
+    protected LoggerInterface $logger;
 
     /**
      * Api constructor.
@@ -96,7 +96,7 @@ class Api
      * @param string $function
      * @return string
      */
-    protected function getApiUri(string $function)
+    protected function getApiUri(string $function): string
     {
         return self::BENY_API_BASE_URL . $this->config->getApiKey() . $function;
     }
@@ -109,8 +109,13 @@ class Api
      * @param array   $params
      * @return Request
      */
-    protected function prepareRequest(string $uri, string $content, string $method, ?Headers $headers, array $params)
-    {
+    protected function prepareRequest(
+        string $uri,
+        string $content,
+        string $method,
+        ?Headers $headers,
+        array $params
+    ): Request {
         $this->request->setUri($uri);
         $this->request->setContent($content);
         $this->request->setMethod($method);
@@ -136,11 +141,11 @@ class Api
         string $method,
         Headers $headers = null,
         array $params = []
-    ) {
+    ): Response {
         /** @var Client $client */
         $client = $this->client->create();
         $client->setOptions([
-            'adapter' => Curl::class,
+            'adapter'     => Curl::class,
             'curloptions' => [
                 CURLOPT_RETURNTRANSFER => 1,
             ],
@@ -163,10 +168,10 @@ class Api
     /**
      * @return array
      */
-    protected function getStandardParams()
+    protected function getStandardParams(): array
     {
         return [
-            'test' => $this->config->getTestEnable(),
+            'test'        => $this->config->getTestEnable(),
             'marketplace' => $this->config->getMarketPlace(),
         ];
     }

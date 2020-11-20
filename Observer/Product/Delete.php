@@ -23,15 +23,15 @@ class Delete implements ObserverInterface
     /**
      * @var DeleteProducts
      */
-    private $delete;
+    private DeleteProducts $delete;
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
     /**
      * @var ConfigInterface
      */
-    private $config;
+    private ConfigInterface $config;
 
     /**
      * Delete constructor.

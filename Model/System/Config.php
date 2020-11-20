@@ -20,7 +20,7 @@ class Config implements ConfigInterface
     /**
      * @var ScopeConfigInterface
      */
-    public $scopeConfig;
+    public ScopeConfigInterface $scopeConfig;
 
     /**
      * Export constructor.

@@ -23,7 +23,7 @@ class DeleteProducts extends Api
      * @param array $productSkus
      * @return Response
      */
-    public function deleteFromBeny(array $productSkus)
+    public function deleteFromBeny(array $productSkus): Response
     {
         $uri = $this->getApiUri(self::BENY_API_DELETE_PRODUCTS);
         $requestContent = \json_encode(['ids' => [$productSkus]]);

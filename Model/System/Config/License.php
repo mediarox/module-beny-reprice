@@ -22,7 +22,7 @@ class License extends Api
     /**
      * @return Response
      */
-    public function checkLicense()
+    public function checkLicense(): Response
     {
         $apiKey = $this->config->getApiKey();
         if (empty($apiKey)) {

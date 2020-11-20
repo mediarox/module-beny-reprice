@@ -19,7 +19,7 @@ class Marketplace implements OptionSourceInterface
     /**
      * @inheritDoc
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         return [
             ['value' => 'google.de', 'label' => 'google.de'],

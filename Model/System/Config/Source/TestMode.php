@@ -19,7 +19,7 @@ class TestMode implements OptionSourceInterface
     /**
      * @inheritDoc
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         return [
             ['value' => 1, 'label' => __('Enable')],

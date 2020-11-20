@@ -37,7 +37,7 @@ class ExportErrors extends Field
      * @param AbstractElement $element
      * @return string
      */
-    public function render(AbstractElement $element)
+    public function render(AbstractElement $element): string
     {
         $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
         return parent::render($element);
@@ -47,7 +47,7 @@ class ExportErrors extends Field
      * @param AbstractElement $element
      * @return string
      */
-    protected function _getElementHtml(AbstractElement $element)
+    protected function _getElementHtml(AbstractElement $element): string
     {
         return $this->_toHtml();
     }
@@ -55,7 +55,7 @@ class ExportErrors extends Field
     /**
      * @return string
      */
-    public function getAjaxUrl()
+    public function getAjaxUrl(): string
     {
         return $this->getUrl(self::CONTROLLER_ROUTE_EXPORT_ERRORS);
     }

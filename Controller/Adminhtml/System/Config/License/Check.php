@@ -5,9 +5,11 @@
  * @author    Marcus Bernt <mbernt@mediarox.de>
  */
 
+declare(strict_types=1);
+
 namespace Mediarox\BenyReprice\Controller\Adminhtml\System\Config\License;
 
-use Magento\Backend\App\Action;
+use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Mediarox\BenyReprice\Model\System\Config\License;
 
@@ -16,23 +18,27 @@ use Mediarox\BenyReprice\Model\System\Config\License;
  *
  * Return license information.
  */
-class Check extends Action
+class Check implements ActionInterface
 {
+    /**
+     * @var ResultFactory
+     */
+    protected ResultFactory $resultFactory;
     /**
      * @var License
      */
-    private $license;
+    private License $license;
 
     /**
      * Check constructor.
      *
-     * @param Action\Context $context
-     * @param License        $license
+     * @param License       $license
+     * @param ResultFactory $resultFactory
      */
-    public function __construct(Action\Context $context, License $license)
+    public function __construct(License $license, ResultFactory $resultFactory)
     {
-        parent::__construct($context);
         $this->license = $license;
+        $this->resultFactory = $resultFactory;
     }
 
     /**

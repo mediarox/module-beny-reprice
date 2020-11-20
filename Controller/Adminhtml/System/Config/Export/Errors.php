@@ -5,12 +5,13 @@
  * @author    Marcus Bernt <mbernt@mediarox.de>
  */
 
+declare(strict_types=1);
+
 namespace Mediarox\BenyReprice\Controller\Adminhtml\System\Config\Export;
 
-use Magento\Backend\App\Action;
-use Magento\Framework\App\Response\Http\FileFactory;
+use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\App\Response\Http\FileFactory;
 use Mediarox\BenyReprice\Model\System\Config\Export\Errors as ExportErrors;
 
 /**
@@ -18,27 +19,25 @@ use Mediarox\BenyReprice\Model\System\Config\Export\Errors as ExportErrors;
  *
  * Prepare csv file for download.
  */
-class Errors extends Action
+class Errors implements ActionInterface
 {
     /**
      * @var ExportErrors
      */
-    private $errors;
+    private ExportErrors $errors;
     /**
      * @var FileFactory
      */
-    private $fileFactory;
+    private FileFactory $fileFactory;
 
     /**
      * ExportErrors constructor.
      *
-     * @param Action\Context $context
-     * @param ExportErrors   $errors
-     * @param FileFactory    $fileFactory
+     * @param ExportErrors $errors
+     * @param FileFactory  $fileFactory
      */
-    public function __construct(Action\Context $context, ExportErrors $errors, FileFactory $fileFactory)
+    public function __construct(ExportErrors $errors, FileFactory $fileFactory)
     {
-        parent::__construct($context);
         $this->errors = $errors;
         $this->fileFactory = $fileFactory;
     }

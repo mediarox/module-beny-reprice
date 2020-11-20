@@ -21,22 +21,22 @@ class Export
     /**
      * @var ImportProducts
      */
-    private $export;
+    private ImportProducts $export;
     /**
      * @var Config
      */
-    private $config;
+    private Config $config;
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface $logger;
 
     /**
      * Export constructor.
      *
-     * @param ImportProducts $export
-     * @param Config                                     $config
-     * @param LoggerInterface                            $logger
+     * @param ImportProducts  $export
+     * @param Config          $config
+     * @param LoggerInterface $logger
      */
     public function __construct(ImportProducts $export, Config $config, LoggerInterface $logger)
     {

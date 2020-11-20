@@ -19,7 +19,7 @@ class LineEnd implements OptionSourceInterface
     /**
      * @inheritDoc
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         return [
             ['value' => 'win', 'label' => 'Windows'],

@@ -28,11 +28,11 @@ class ImportProducts extends Api
     /**
      * @var DirectoryList
      */
-    private $directoryList;
+    private DirectoryList $directoryList;
     /**
      * @var Filesystem
      */
-    private $filesystem;
+    private Filesystem $filesystem;
 
     /**
      * ImportProducts constructor.
@@ -68,7 +68,7 @@ class ImportProducts extends Api
      *
      * @throws FileSystemException
      */
-    public function import()
+    public function import(): \Laminas\Http\Response
     {
         $uri = $this->getApiUri(self::BENY_API_IMPORT_PRODUCTS);
         $requestContent = $this->getExportFileContent();
@@ -82,7 +82,7 @@ class ImportProducts extends Api
     /**
      * @return array
      */
-    protected function getExportParams()
+    protected function getExportParams(): array
     {
         return [
             'keepold' => $this->config->getKeepOld(),
