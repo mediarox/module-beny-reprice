@@ -1,0 +1,45 @@
+"Check License","Lizenz pruefen"
+"Export Erroneous Products","Fehlerhafte Produkte exportieren"
+"Unable to read response, or response is empty","Antwort kann nicht gelesen werden oder ist leer."
+"Product with sku ' . . ' does not exist.","Produkt mit der SKU ' . . ' existiert nicht."
+"No api key found. Please make sure you saved your api key.","Es wurde kein API Schluessel gefunden. Bitte pruefen Sie die Konfiguration."
+Enable,Aktivieren
+Disable,Deaktivieren
+Comma,Komma
+Semicolon,Semikolon
+Tab,Tab
+"Beny Reprice","Beny Reprice"
+General,Allgemein
+"Enable Beny Reprice","Beny Reprice aktivieren"
+"Debug Mode","Debug Mode"
+"Enable extended logging","Erweiterte Logs aktivieren"
+"Test Mode","Testmodus"
+"Enable Test Mode. No changes will be made on beny nor in the shop.","Testmodus aktivieren. Es werden keine Aenderungen bie Beny oder im Katalog vorgenommen."
+"API Key","API Schluessel"
+"Please enter your Beny Reprice API key","Bitte geben Sie Ihren Beny Reprice API Schluessel ein"
+Email,Email
+"Please enter email address to receive status notifications.","Geben Sie Ihre Email Adresse an um Statusmitteilungen zu erhalten."
+"Product Export","Produkt Export"
+"Enable Product Export","Produkt Export aktivieren"
+"Export products to Beny Reprice.","Produkte zu Beny Reprice exportieren."
+Marketplace,Marktplatz
+"Marketplace to export to and import from.","Marktplatz zu dem exportiert/von dem importiert werden soll."
+"Export File","Exportdatei"
+"Only .csv or .excel files are supported","Es werden nur .csv oder .excel Dateien unterstuetzt"
+"Keep Old","Keep Old"
+"Determines wether old product entries can be deleted.","Bestimmt, ob alte Produkteintraege bei Beny Reprice geloescht werden sollen."
+"Line End","Zeilenende"
+"Specifiy on which operating system your created your import file.","Betriebssystem auf dem die Importdatei erstellt wurde."
+Seperator,Trennzeichen
+"Determines the character seperating the values.","Verwendetes Trennzeichen in der Datei."
+"Price Updates","Preisaktualisierungen"
+"Export All","Alle exportieren"
+"Determines whether or not a full export of all products is made or only an export of those
+                        products that BENY has a price update suggestion for.","Bestimmt, ob alle Produkte exportiert werden, oder nur solche fuer die eine Preisaktualisierung existiert."
+"Enable Price Import","Preisimport aktivieren"
+"Import price suggestions directly to catalog.","Preisaktualisierungen direkt in den Katalog importieren."
+"Delete Product","Produkt loeschen"
+"Delete on Beny Reprice","Bei Beny Reprice loeschen"
+"Delete product from Beny Reprice if product is deleted from catalog.","Produkt bei Beny loeschen, wenn es aus dem Katalog geloescht wird."
+"Export Of Erroneous Products","Export Fehlerhafter Produkte"
+"Export a csv file containing all erroneous products from Beny Reprice.","Exportiert alle fehlerhaften Produkte in eine CSV Datei."
