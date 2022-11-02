@@ -119,7 +119,7 @@ class Api
         $this->request->setUri($uri);
         $this->request->setContent($content);
         $this->request->setMethod($method);
-        if (!null === $headers) {
+        if ($headers) {
             $this->request->setHeaders($headers);
         }
         $params = array_merge($params, $this->getStandardParams());
