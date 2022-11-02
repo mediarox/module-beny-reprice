@@ -46,7 +46,7 @@ class Test extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-//        $this->export->execute();
+        $this->export->execute();
         $this->import->execute();
     }
 }
