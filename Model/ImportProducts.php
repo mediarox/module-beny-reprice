@@ -25,6 +25,7 @@ use Psr\Log\LoggerInterface;
  */
 class ImportProducts extends Api
 {
+    private const EXPORT_FILE_PATH = 'feeds/beny.csv';
     /**
      * @var DirectoryList
      */
@@ -99,9 +100,8 @@ class ImportProducts extends Api
      */
     protected function getExportFileContent()
     {
-        $path = $this->getExportFilePath();
-        $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
-        $fileContent = $directoryRead->readFile($path);
+        $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::PUB);
+        $fileContent = $directoryRead->readFile(self::EXPORT_FILE_PATH);
         return utf8_encode(($fileContent));
     }
 
