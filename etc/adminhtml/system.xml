@@ -108,6 +108,21 @@
                     <comment>Import price suggestions directly to catalog.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
+                <field id="enable_decimal" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Import Prices in Decimal</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="beny_reprice/import/import_prices">1</field>
+                    </depends>
+                </field>
+                <field id="decimals" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="text">
+                    <label>Decimals</label>
+                    <depends>
+                        <field id="beny_reprice/import/enable_decimal">1</field>
+                    </depends>
+                </field>
             </group>
             <group id="delete" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
                 <label>Delete Product</label>
