@@ -26,10 +26,10 @@ class DeleteProducts extends Api
     public function deleteFromBeny(array $productSkus): Response
     {
         $uri = $this->getApiUri(self::BENY_API_DELETE_PRODUCTS);
-        $requestContent = \json_encode(['ids' => [$productSkus]]);
-        $headers = $this->headers->addHeaders(['Content-Type=application/json']);
+        $deleteSkus = ['ids' => implode(',', $productSkus)];
+        $headers = $this->headers->addHeaders(['Content-Type' => 'application/json']);
         $method = Request::METHOD_GET;
 
-        return $this->sendRequest($uri, $requestContent, $method, $headers);
+        return $this->sendRequest($uri, '', $method, $headers, $deleteSkus);
     }
 }

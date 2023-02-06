@@ -128,11 +128,11 @@ class Api
     }
 
     /**
-     * @param string  $uri
-     * @param string  $content
-     * @param string  $method
-     * @param Headers $headers
-     * @param array   $params
+     * @param  string       $uri
+     * @param  string       $content
+     * @param  string       $method
+     * @param  Headers|null $headers
+     * @param  array        $params
      * @return Response
      */
     protected function sendRequest(
