@@ -148,6 +148,7 @@ class Api
             'adapter'     => Curl::class,
             'curloptions' => [
                 CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_TIMEOUT => 120
             ],
         ]);
 
