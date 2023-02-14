@@ -100,9 +100,15 @@ class ImportProducts extends Api
      */
     protected function getExportFileContent()
     {
-        $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::PUB);
-        $fileContent = $directoryRead->readFile(self::EXPORT_FILE_PATH);
-        return utf8_encode(($fileContent));
+        $path = $this->getExportFilePath();
+        if ($path) {
+            $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
+            $fileContent = $directoryRead->readFile($path);
+        } else {
+            $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::PUB);
+            $fileContent = $directoryRead->readFile(self::EXPORT_FILE_PATH);
+        }
+        return utf8_encode($fileContent);
     }
 
     /**
@@ -113,8 +119,9 @@ class ImportProducts extends Api
     protected function getExportFilePath()
     {
         $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
-        return $directoryRead->getAbsolutePath(self::BENY_API_UPLOAD_DIR) .
+        $filePath = $directoryRead->getAbsolutePath(self::BENY_API_UPLOAD_DIR) .
             DIRECTORY_SEPARATOR .
             $this->config->getFileUpload();
+        return $this->config->getFileUpload() ? $filePath : false;
     }
 }
