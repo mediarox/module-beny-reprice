@@ -16,6 +16,7 @@ interface ConfigInterface
     const CONFIG_BENY_REPIRCE_KEEP_OLD = 'beny_reprice/export/keep_old';
     const CONFIG_BENY_REPIRCE_EXPORT_ALL = 'beny_reprice/import/export_all';
     const CONFIG_BENY_REPIRCE_DELETE_PRODUCT = 'beny_reprice/delete/delete_product';
+    const CONFIG_BENY_REPIRCE_ENABLE_CRON = 'beny_reprice/delete/enable_cron';
     const CONFIG_BENY_REPIRCE_IMPORT_PRICES = 'beny_reprice/import/import_prices';
     const CONFIG_BENY_REPIRCE_IMPORT_ENABLE_DECIMAL = 'beny_reprice/import/enable_decimal';
     const CONFIG_BENY_REPIRCE_IMPORT_DECIMALS = 'beny_reprice/import/decimals';
@@ -80,6 +81,8 @@ interface ConfigInterface
      * @return int
      */
     public function getDeleteProduct(): int;
+
+    public function getEnableCron(): int;
 
     /**
      * @return int

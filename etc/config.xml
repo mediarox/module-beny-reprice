@@ -29,6 +29,7 @@
             </import>
             <delete>
                 <delete_product>0</delete_product>
+                <enable_cron>0</enable_cron>
             </delete>
         </beny_reprice>
     </default>

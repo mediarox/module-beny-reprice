@@ -34,7 +34,7 @@ class DeleteOld
 
     public function execute()
     {
-        if ($this->config->getDeleteProduct()) {
+        if ($this->config->getEnableCron()) {
             $deleteSkus = $this->getSkusToDelete();
             $deleteSkus = array_chunk($deleteSkus, 200);
             foreach ($deleteSkus as $deleteSkusSplice) {

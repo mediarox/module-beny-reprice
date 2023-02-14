@@ -139,6 +139,11 @@ class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_DELETE_PRODUCT);
     }
 
+    public function getEnableCron(): int
+    {
+        return $this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ENABLE_CRON);
+    }
+
     /**
      * @inheritDoc
      */
