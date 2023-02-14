@@ -37,8 +37,8 @@ class DeleteOld
         if ($this->config->getEnableCron()) {
             $deleteSkus = $this->getSkusToDelete();
             $deleteSkus = array_chunk($deleteSkus, 200);
-            foreach ($deleteSkus as $deleteSkusSplice) {
-                $this->deleteProducts->deleteFromBeny($deleteSkusSplice);
+            foreach ($deleteSkus as $chunk) {
+                $this->deleteProducts->deleteFromBeny($chunk);
             }
         }
     }
