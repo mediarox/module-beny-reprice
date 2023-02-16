@@ -138,7 +138,7 @@
                     <comment>Delete product from Beny Reprice if product is deleted from catalog.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
-                <field id="delete_product" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                <field id="enable_cron" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
                        sortOrder="20" type="select">
                     <label>Enable Cron</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
