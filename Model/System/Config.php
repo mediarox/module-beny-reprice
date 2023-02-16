@@ -175,4 +175,9 @@ class Config implements ConfigInterface
     {
         return (int)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_IMPORT_DECIMALS);
     }
+
+    public function getCurlTimeout(): int
+    {
+        return (int)$this->scopeConfig->getValue(self::CONFIG_BENY_REPRICE_CURL_TIMEOUT);
+    }
 }

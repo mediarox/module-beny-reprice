@@ -16,6 +16,7 @@
                 <test_enable>1</test_enable>
                 <api_key></api_key>
                 <email_notification></email_notification>
+                <timeout>120</timeout>
             </general>
             <export>
                 <file_upload></file_upload>

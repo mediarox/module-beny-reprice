@@ -51,6 +51,11 @@
                     <label>Email</label>
                     <comment>Please enter email address to receive status notifications.</comment>
                 </field>
+                <field id="timeout" translate="label comment" showInDefault="1" showInStore="0"
+                       showInWebsite="0" sortOrder="30" type="text">
+                    <label>CURL Timeout Limit</label>
+                    <tooltip>Raise timeout limit if you get read time out errors.</tooltip>
+                </field>
             </group>
             <group id="export" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
                 <label>Product Export</label>

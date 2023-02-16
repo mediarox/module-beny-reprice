@@ -9,6 +9,7 @@ interface ConfigInterface
     const CONFIG_BENY_REPRICE_TEST_MODE = 'beny_reprice/general/test_enable';
     const CONFIG_BENY_REPRICE_API_KEY = 'beny_reprice/general/api_key';
     const CONFIG_BENY_REPRICE_NOTIFY_EMAIL = 'beny_reprice/general/email_notification';
+    const CONFIG_BENY_REPRICE_CURL_TIMEOUT = 'beny_reprice/general/timeout';
     const CONFIG_BENY_REPRICE_MARKETPLACE = 'beny_reprice/export/market_place';
     const CONFIG_BENY_REPRICE_FILE = 'beny_reprice/export/file_upoad';
     const CONFIG_BENY_REPIRCE_SEPERATOR = 'beny_reprice/export/seperator';
@@ -93,12 +94,16 @@ interface ConfigInterface
      * @return int
      */
     public function getEnableExport(): int;
+
     /**
      * @return int
      */
     public function getEnableDecimal(): int;
+
     /**
      * @return int
      */
     public function getDecimals(): int;
+
+    public function getCurlTimeout(): int;
 }
