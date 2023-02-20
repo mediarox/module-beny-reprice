@@ -19,7 +19,6 @@ use Psr\Log\LoggerInterface;
 
 /**
  * Class GetPriceUpdates
- *
  * Collects price updates from Beny.
  */
 class GetPriceUpdates extends Api
@@ -50,10 +49,19 @@ class GetPriceUpdates extends Api
      */
     private function getImportParams(): array
     {
-        return [
-            'exportall' => $this->config->getExportAll(),
-            'format'    => 'json',
+        $importParams = [
+            'exportall'   => $this->config->getExportAll(),
+            'format'      => 'json',
         ];
+
+        if ($this->config->getEnableDecimal()) {
+            $importParams = \array_merge(
+                $importParams,
+                ['pformat_dec' => $this->config->getDecimals()]
+            );
+        }
+
+        return $importParams;
     }
 
     /**

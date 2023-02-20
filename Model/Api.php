@@ -119,7 +119,7 @@ class Api
         $this->request->setUri($uri);
         $this->request->setContent($content);
         $this->request->setMethod($method);
-        if (!null === $headers) {
+        if ($headers) {
             $this->request->setHeaders($headers);
         }
         $params = array_merge($params, $this->getStandardParams());
@@ -128,11 +128,11 @@ class Api
     }
 
     /**
-     * @param string  $uri
-     * @param string  $content
-     * @param string  $method
-     * @param Headers $headers
-     * @param array   $params
+     * @param  string       $uri
+     * @param  string       $content
+     * @param  string       $method
+     * @param  Headers|null $headers
+     * @param  array        $params
      * @return Response
      */
     protected function sendRequest(
@@ -148,6 +148,7 @@ class Api
             'adapter'     => Curl::class,
             'curloptions' => [
                 CURLOPT_RETURNTRANSFER => 1,
+                CURLOPT_TIMEOUT => $this->config->getCurlTimeout()
             ],
         ]);
 

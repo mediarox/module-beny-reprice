@@ -7,6 +7,7 @@
 
 namespace Mediarox\BenyReprice\Console\Command;
 
+use Mediarox\BenyReprice\Cron\DeleteOld;
 use Mediarox\BenyReprice\Cron\Export;
 use Mediarox\BenyReprice\Cron\Import;
 use Symfony\Component\Console\Command\Command;
@@ -15,6 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Test extends Command
 {
+    protected DeleteOld $deleteOld;
     /**
      * @var Import
      */
@@ -24,18 +26,13 @@ class Test extends Command
      */
     private $export;
 
-    /**
-     * Test constructor.
-     *
-     * @param Import      $import
-     * @param Export      $export
-     * @param string|null $name
-     */
-    public function __construct(Import $import, Export $export, string $name = null)
+
+    public function __construct(Import $import, Export $export, DeleteOld $deleteOld, string $name = null)
     {
         parent::__construct($name);
         $this->import = $import;
         $this->export = $export;
+        $this->deleteOld = $deleteOld;
     }
 
     protected function configure()
@@ -46,7 +43,8 @@ class Test extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-//        $this->export->execute();
+        $this->export->execute();
         $this->import->execute();
+        $this->deleteOld->execute();
     }
 }

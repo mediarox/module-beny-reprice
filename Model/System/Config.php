@@ -12,7 +12,6 @@ use Mediarox\BenyReprice\Api\Data\ConfigInterface;
 
 /**
  * Class Config
- *
  * Collects configuration values.
  */
 class Config implements ConfigInterface
@@ -25,7 +24,7 @@ class Config implements ConfigInterface
     /**
      * Export constructor.
      *
-     * @param ScopeConfigInterface $scopeConfig
+     * @param  ScopeConfigInterface $scopeConfig
      */
     public function __construct(ScopeConfigInterface $scopeConfig)
     {
@@ -140,6 +139,11 @@ class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_DELETE_PRODUCT);
     }
 
+    public function getEnableCron(): int
+    {
+        return $this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ENABLE_CRON);
+    }
+
     /**
      * @inheritDoc
      */
@@ -154,5 +158,26 @@ class Config implements ConfigInterface
     public function getEnableExport(): int
     {
         return $this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ENABLE_EXPORT);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getEnableDecimal(): int
+    {
+        return $this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_IMPORT_ENABLE_DECIMAL);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDecimals(): int
+    {
+        return (int)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_IMPORT_DECIMALS);
+    }
+
+    public function getCurlTimeout(): int
+    {
+        return (int)$this->scopeConfig->getValue(self::CONFIG_BENY_REPRICE_CURL_TIMEOUT);
     }
 }

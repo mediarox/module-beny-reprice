@@ -51,6 +51,11 @@
                     <label>Email</label>
                     <comment>Please enter email address to receive status notifications.</comment>
                 </field>
+                <field id="timeout" translate="label comment" showInDefault="1" showInStore="0"
+                       showInWebsite="0" sortOrder="30" type="text">
+                    <label>CURL Timeout Limit</label>
+                    <tooltip>Raise timeout limit if you get read time out errors.</tooltip>
+                </field>
             </group>
             <group id="export" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
                 <label>Product Export</label>
@@ -70,19 +75,20 @@
                        sortOrder="20" type="Magento\Config\Block\System\Config\Form\Field\File">
                     <label>Export File</label>
                     <comment>Only .csv or .excel files are supported</comment>
+                    <tooltip>Alternatively you can upload a csv file named beny.csv to /pub/feeds/ folder (needs to be created).</tooltip>
                     <backend_model>Magento\Config\Model\Config\Backend\File</backend_model>
                     <upload_dir config="system" scope_info="1">beny_reprice</upload_dir>
                 </field>
                 <field id="keep_old" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
                        sortOrder="20" type="select">
                     <label>Keep Old</label>
-                    <comment>Determines wether old product entries can be deleted.</comment>
+                    <comment>Determines whether old product entries can be deleted.</comment>
                     <source_model>Mediarox\BenyReprice\Model\System\Config\Source\KeepOld</source_model>
                 </field>
                 <field id="line_end" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
                        sortOrder="20" type="select">
                     <label>Line End</label>
-                    <comment>Specifiy on which operating system your created your import file.</comment>
+                    <comment>Specifiy on which operating system you created your import file.</comment>
                     <source_model>Mediarox\BenyReprice\Model\System\Config\Source\LineEnd</source_model>
                 </field>
                 <field id="seperator" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
@@ -108,6 +114,21 @@
                     <comment>Import price suggestions directly to catalog.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
+                <field id="enable_decimal" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Import Prices in Decimal</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <depends>
+                        <field id="beny_reprice/import/import_prices">1</field>
+                    </depends>
+                </field>
+                <field id="decimals" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="text">
+                    <label>Decimals</label>
+                    <depends>
+                        <field id="beny_reprice/import/enable_decimal">1</field>
+                    </depends>
+                </field>
             </group>
             <group id="delete" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
                 <label>Delete Product</label>
@@ -116,6 +137,12 @@
                     <label>Delete on Beny Reprice</label>
                     <comment>Delete product from Beny Reprice if product is deleted from catalog.</comment>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="enable_cron" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Enable Cron</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If enabled cron job will delete disabled products from beny.</tooltip>
                 </field>
             </group>
             <group id="export_errors" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">

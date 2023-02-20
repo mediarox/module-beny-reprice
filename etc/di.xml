@@ -16,29 +16,4 @@
             </argument>
         </arguments>
     </type>
-
-    <!-- Custom logger-->
-    <virtualType name="BenyLogger" type="Magento\Framework\Logger\Monolog">
-        <arguments>
-            <argument name="handlers" xsi:type="array">
-                <item name="critical" xsi:type="object">Mediarox\BenyReprice\Logger\Handler\CriticalHandler</item>
-                <item name="debug" xsi:type="object">Mediarox\BenyReprice\Logger\Handler\DebugHandler</item>
-            </argument>
-        </arguments>
-    </virtualType>
-    <type name="Mediarox\BenyReprice\Cron\Import">
-        <arguments>
-            <argument name="logger" xsi:type="object">BenyLogger</argument>
-        </arguments>
-    </type>
-    <type name="Mediarox\BenyReprice\Cron\Export">
-        <arguments>
-            <argument name="logger" xsi:type="object">BenyLogger</argument>
-        </arguments>
-    </type>
-    <type name="Mediarox\BenyReprice\Model\Api">
-        <arguments>
-            <argument name="logger" xsi:type="object">BenyLogger</argument>
-        </arguments>
-    </type>
 </config>

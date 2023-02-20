@@ -10,10 +10,13 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
         <job name="mediarox_beny_export" instance="Mediarox\BenyReprice\Cron\Export" method="execute">
-            <schedule>0 1 * * *</schedule>
+            <schedule>0 3 * * *</schedule>
         </job>
         <job name="mediarox_beny_import" instance="Mediarox\BenyReprice\Cron\Import" method="execute">
-            <schedule>0 3 * * *</schedule>
+            <schedule>0 1 * * *</schedule>
+        </job>
+        <job name="mediarox_beny_delete" instance="Mediarox\BenyReprice\Cron\DeleteOld" method="execute">
+            <schedule>30 3 * * *</schedule>
         </job>
     </group>
 </config>

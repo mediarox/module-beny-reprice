@@ -25,6 +25,7 @@ use Psr\Log\LoggerInterface;
  */
 class ImportProducts extends Api
 {
+    private const EXPORT_FILE_PATH = 'feeds/beny.csv';
     /**
      * @var DirectoryList
      */
@@ -100,9 +101,14 @@ class ImportProducts extends Api
     protected function getExportFileContent()
     {
         $path = $this->getExportFilePath();
-        $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
-        $fileContent = $directoryRead->readFile($path);
-        return utf8_encode(($fileContent));
+        if ($path) {
+            $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
+            $fileContent = $directoryRead->readFile($path);
+        } else {
+            $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::PUB);
+            $fileContent = $directoryRead->readFile(self::EXPORT_FILE_PATH);
+        }
+        return utf8_encode($fileContent);
     }
 
     /**
@@ -113,8 +119,9 @@ class ImportProducts extends Api
     protected function getExportFilePath()
     {
         $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA);
-        return $directoryRead->getAbsolutePath(self::BENY_API_UPLOAD_DIR) .
+        $filePath = $directoryRead->getAbsolutePath(self::BENY_API_UPLOAD_DIR) .
             DIRECTORY_SEPARATOR .
             $this->config->getFileUpload();
+        return $this->config->getFileUpload() ? $filePath : false;
     }
 }

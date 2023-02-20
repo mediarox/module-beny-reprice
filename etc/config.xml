@@ -16,6 +16,7 @@
                 <test_enable>1</test_enable>
                 <api_key></api_key>
                 <email_notification></email_notification>
+                <timeout>120</timeout>
             </general>
             <export>
                 <file_upload></file_upload>
@@ -29,6 +30,7 @@
             </import>
             <delete>
                 <delete_product>0</delete_product>
+                <enable_cron>0</enable_cron>
             </delete>
         </beny_reprice>
     </default>
