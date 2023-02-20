@@ -35,20 +35,24 @@ class DeleteOld
     public function execute()
     {
         if ($this->config->getEnableCron()) {
-            $deleteSkus = $this->getSkusToDelete();
-            $deleteSkus = array_chunk($deleteSkus, 200);
-            foreach ($deleteSkus as $chunk) {
-                $this->deleteProducts->deleteFromBeny($chunk);
+            $collection = $this->getProductsToDelete();
+            $collection->setPageSize(200);
+            $lastPage = $collection->getLastPageNumber();
+            $currentPage = 1;
+            while ($currentPage <= $lastPage) {
+                $collection->setCurPage($currentPage);
+                $skus = $collection->getColumnValues('sku');
+                $this->deleteProducts->deleteFromBeny($skus);
+                $currentPage++;
             }
         }
     }
 
-    private function getSkusToDelete(): array
+    public function getProductsToDelete(): Collection
     {
         /** @var Collection $productCollection */
         $productCollection = $this->collectionFactory->create();
-        $productCollection->addAttributeToFilter('status', Status::STATUS_DISABLED)
-            ->addAttributeToFilter('ts24_beny', 1);
-        return $productCollection->getColumnValues('sku');
+        $productCollection->addAttributeToFilter('status', Status::STATUS_DISABLED);
+        return $productCollection;
     }
 }

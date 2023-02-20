@@ -142,7 +142,7 @@
                        sortOrder="20" type="select">
                     <label>Enable Cron</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <tooltip>If enabled cron job will delete products from beny.</tooltip>
+                    <tooltip>If enabled cron job will delete disabled products from beny.</tooltip>
                 </field>
             </group>
             <group id="export_errors" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
