@@ -176,8 +176,26 @@ class Config implements ConfigInterface
         return (int)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_IMPORT_DECIMALS);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function getCurlTimeout(): int
     {
         return (int)$this->scopeConfig->getValue(self::CONFIG_BENY_REPRICE_CURL_TIMEOUT);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getOnlyOk(): bool
+    {
+        return (bool)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ONLY_OK);
+    }
+    /**
+     * @inheritDoc
+     */
+    public function getGetStatus(): string
+    {
+        return (bool)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ONLY_OK);
     }
 }

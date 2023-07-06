@@ -85,11 +85,17 @@ class ImportProducts extends Api
      */
     protected function getExportParams(): array
     {
-        return [
+        $params = [
             'keepold' => $this->config->getKeepOld(),
             'lineend' => $this->config->getLineEnd(),
             'seperator' => $this->config->getSeperator(),
         ];
+
+        if ($getStatus = $this->config->getGetStatus()) {
+            $params['get_status'] = $getStatus;
+        }
+
+        return $params;
     }
 
     /**

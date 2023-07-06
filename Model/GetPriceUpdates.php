@@ -50,15 +50,13 @@ class GetPriceUpdates extends Api
     private function getImportParams(): array
     {
         $importParams = [
-            'exportall'   => $this->config->getExportAll(),
-            'format'      => 'json',
+            'exportall' => $this->config->getExportAll(),
+            'format'    => 'json',
+            'only_ok'   => $this->config->getOnlyOk(),
         ];
 
         if ($this->config->getEnableDecimal()) {
-            $importParams = \array_merge(
-                $importParams,
-                ['pformat_dec' => $this->config->getDecimals()]
-            );
+            $importParams = \array_merge($importParams, ['pformat_dec' => $this->config->getDecimals()]);
         }
 
         return $importParams;

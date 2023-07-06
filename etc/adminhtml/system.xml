@@ -97,6 +97,12 @@
                     <comment>Determines the character seperating the values.</comment>
                     <source_model>Mediarox\BenyReprice\Model\System\Config\Source\Seperator</source_model>
                 </field>
+                <field id="get_status" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="multiselect">
+                    <label>Seperator</label>
+                    <comment>Determines the character seperating the values.</comment>
+                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\GetStatus</source_model>
+                </field>
             </group>
             <group id="import" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
                 <label>Price Updates</label>
@@ -128,6 +134,12 @@
                     <depends>
                         <field id="beny_reprice/import/enable_decimal">1</field>
                     </depends>
+                </field>
+                <field id="only_ok" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
+                       sortOrder="20" type="select">
+                    <label>Only OK</label>
+                    <comment>If activated only successfully updated product prices will be imported.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
             </group>
             <group id="delete" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
