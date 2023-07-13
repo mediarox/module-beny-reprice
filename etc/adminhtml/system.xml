@@ -97,12 +97,6 @@
                     <comment>Determines the character seperating the values.</comment>
                     <source_model>Mediarox\BenyReprice\Model\System\Config\Source\Seperator</source_model>
                 </field>
-                <field id="get_status" translate="label comment" showInDefault="1" showInStore="0" showInWebsite="0"
-                       sortOrder="20" type="multiselect">
-                    <label>Seperator</label>
-                    <comment>Determines the character seperating the values.</comment>
-                    <source_model>Mediarox\BenyReprice\Model\System\Config\Source\GetStatus</source_model>
-                </field>
             </group>
             <group id="import" sortOrder="10" showInWebsite="0" showInStore="0" showInDefault="1" translate="label">
                 <label>Price Updates</label>

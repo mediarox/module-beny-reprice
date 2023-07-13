@@ -191,11 +191,4 @@ class Config implements ConfigInterface
     {
         return (bool)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ONLY_OK);
     }
-    /**
-     * @inheritDoc
-     */
-    public function getGetStatus(): string
-    {
-        return (bool)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ONLY_OK);
-    }
 }
