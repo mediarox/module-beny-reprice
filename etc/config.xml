@@ -27,6 +27,7 @@
             <import>
                 <export_all>0</export_all>
                 <import_prices>0</import_prices>
+                <only_ok>true</only_ok>
             </import>
             <delete>
                 <delete_product>0</delete_product>

@@ -22,6 +22,7 @@ interface ConfigInterface
     const CONFIG_BENY_REPIRCE_IMPORT_ENABLE_DECIMAL = 'beny_reprice/import/enable_decimal';
     const CONFIG_BENY_REPIRCE_IMPORT_DECIMALS = 'beny_reprice/import/decimals';
     const CONFIG_BENY_REPIRCE_ENABLE_EXPORT = 'beny_reprice/export/enable_export';
+    const CONFIG_BENY_REPIRCE_ONLY_OK = 'beny_reprice/import/only_ok';
 
     /**
      * @return int
@@ -105,5 +106,13 @@ interface ConfigInterface
      */
     public function getDecimals(): int;
 
+    /**
+     * @return int
+     */
     public function getCurlTimeout(): int;
+
+    /**
+     * @return bool
+     */
+    public function getOnlyOk(): bool;
 }
