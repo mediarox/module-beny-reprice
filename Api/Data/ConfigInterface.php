@@ -112,7 +112,7 @@ interface ConfigInterface
     public function getCurlTimeout(): int;
 
     /**
-     * @return bool
+     * @return string
      */
-    public function getOnlyOk(): bool;
+    public function getOnlyOk(): string;
 }

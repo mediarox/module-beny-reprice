@@ -187,8 +187,8 @@ class Config implements ConfigInterface
     /**
      * @inheritDoc
      */
-    public function getOnlyOk(): bool
+    public function getOnlyOk(): string
     {
-        return (bool)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ONLY_OK);
+        return (bool)$this->scopeConfig->getValue(self::CONFIG_BENY_REPIRCE_ONLY_OK) ? "true" : "false";
     }
 }
