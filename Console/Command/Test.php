@@ -41,10 +41,11 @@ class Test extends Command
         $this->setName('mediarox:beny-reprice:test');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->export->execute();
         $this->import->execute();
         $this->deleteOld->execute();
+        return 0;
     }
 }
