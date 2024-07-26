@@ -108,7 +108,7 @@ class ImportProducts extends Api
             $directoryRead = $this->filesystem->getDirectoryRead(DirectoryList::PUB);
             $fileContent = $directoryRead->readFile(self::EXPORT_FILE_PATH);
         }
-        return utf8_encode($fileContent);
+        return mb_convert_encoding($fileContent, 'UTF-8', 'ISO-8859-1');
     }
 
     /**
